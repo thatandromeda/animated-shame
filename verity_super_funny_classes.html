@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verity's Super Funny Classes</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+      .jumbotron {
+        background: #39b3d7;
+      }
+      
+      .jumbotron h1 {
+        color: white;
+      }
+      
+      #class_display {
+        color: #39b3d7;
+        font-size: 200%;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <header>
+      <div class="jumbotron">
+        <h1>Verity's Super Funny Classes</h1>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+          <p id="class_display" class="lead"></p>
+          <button id="combo_button" class="btn btn-info">make another!</button>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        var wordlists = [['stupid', 'small', 'frozen', 'heavy', 'very evil', 'really boring', 'super easy', 'really stupid', 'super hard', 'giant', 'musical', 'fun', 'bad', 'huge', 'tiny', 'heavy', 'one-handed', 'underwater', 'very silly', 'annoying', 'colorful', 'boring'],
+                         ['party', 'underwater', 'one-handed', 'frozen', 'rainbow', 'blue', 'red', 'white', 'dense', 'light', 'itchy', 'exploding', 'peaceful', 'brown', 'dumb', 'red', 'blue', '7:00', 'noon'],
+                         ['cake', 'movie', 'rat', 'star', 'suffix', 'so-clef', 'plate', 'bass clef', 'paper', 'pencil', 'alto clef', 'bracelet', 'fish', 'bug', 'weed', 'paper', 'friend', 'tape', 'diaper', 'cup', 'shipwreck', 'boat', 'airplane', 'alarm clock'],
+                         ['making', 'destroying', 'mixing', 'loving', 'writing', 'ripping', 'ladies', 'juggling', 'eating', 'math', 'killing', 'burning', 'hugging', 'hitting', 'destroying', 'recycling', 'hugging', 'killing', 'ripping', 'flying', 'juggling', 'spinning', 'bending', 'math', 'writing']];
+        
+        function make_silliness () {
+            var class_display = $('#class_display');
+            var i = 0;
+            var silly_class = "";
+            while(wordlists[i]) {
+                var list_length = wordlists[i].length;
+                var rand_index = Math.floor((Math.random()*list_length));
+                var silly_word = wordlists[i][rand_index];
+                silly_class = silly_class + silly_word + " ";
+                i += 1;
+            }
+            class_display.html(silly_class);
+        }
+        $(document).ready(function(){
+            make_silliness();
+            var combo_button = $('#combo_button');
+            combo_button.on('click', function() {
+                make_silliness();
+            });
+        });
+    </script>
+  </body>
+</html>
