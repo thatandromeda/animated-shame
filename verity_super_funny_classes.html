@@ -4,6 +4,19 @@
     <title>Verity's Super Funny Classes</title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <style>
+      html, body {
+        height: 100%;
+      }
+      
+      #wrap {
+        min-height: 100%;
+        height: auto;
+        /* Negative indent footer by its height */
+        margin: 0 auto -120px;
+        /* Pad bottom by footer height */
+        padding: 0 0 120px;
+      }
+
       .jumbotron {
         background: #39b3d7;
       }
@@ -17,21 +30,45 @@
         font-size: 200%;
         font-weight: bold;
       }
+      
+      #footer {
+        background-color: rgb(245, 245, 245);
+        padding: 20px;
+        height: 120px;
+      }
     </style>
   </head>
   
   <body>
-    <header>
-      <div class="jumbotron">
-        <h1>Verity's Super Funny Classes</h1>
-      </div>
-    </header>
-    <div class="container">
-      <div class="row">
-          <p id="class_display" class="lead"></p>
-          <button id="combo_button" class="btn btn-info">make another!</button>
+    <div id="wrap">
+      <header>
+        <div class="jumbotron">
+          <h1>Verity's Super Funny Classes</h1>
+        </div>
+      </header>
+      <div class="container">
+        <div class="row">
+            <p id="class_display" class="lead"></p>
+            <button id="combo_button" class="btn btn-info">make another!</button>
+        </div>
       </div>
     </div>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="span10 offset1">
+            <p>
+              Verity was making up Super!Silly!Classes! by making columns of
+              words -- pick one word from each column to get a super silly
+              class.  This wanted to be a web page, so now it is.
+            </p>
+            <p>
+              For extra fun, draw a picture of your super silly class!
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
         var wordlists = [['stupid', 'small', 'frozen', 'heavy', 'very evil', 'really boring', 'super easy', 'really stupid', 'super hard', 'giant', 'musical', 'fun', 'bad', 'huge', 'tiny', 'heavy', 'one-handed', 'underwater', 'very silly', 'annoying', 'colorful', 'boring'],
