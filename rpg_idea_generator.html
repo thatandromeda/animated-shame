@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>rpg idea generator</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+      html, body {
+        height: 100%;
+      }
+      
+      #wrap {
+        min-height: 100%;
+        height: auto;
+        /* Negative indent footer by its height */
+        margin: 0 auto -120px;
+        /* Pad bottom by footer height */
+        padding: 0 0 120px;
+      }
+
+      .jumbotron {
+        background: #39b3d7;
+      }
+      
+      .jumbotron h1 {
+        color: white;
+      }
+      
+      #class_display {
+        color: #39b3d7;
+        font-size: 200%;
+        font-weight: bold;
+      }
+      
+      #footer {
+        background-color: rgb(245, 245, 245);
+        padding: 20px;
+        height: 120px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="wrap">
+      <header>
+        <div class="jumbotron">
+          <h1>rpg idea generator</h1>
+        </div>
+      </header>
+      <div class="container">
+        <div class="row">
+            <p>You encounter a(n)...</p>
+            <p id="class_display" class="lead"></p>
+            <button id="npcs" class="btn btn-info trigger">NPC!</button>
+            <button id="monsters" class="btn btn-info trigger">MONSTER!</button>
+            <button id="items" class="btn btn-info trigger">ITEM!</button>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="span10 offset1">
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        var npcs =     [['grizzled', 'old', 'young', 'skeptical', 'rancorous', 'cheerful', 'devastatingly gorgeous', 'notorious', 'mysterious', 'curmudgeonly', 'unreliable', 'gung-ho', 'Eastern', 'Western', 'Northern', 'Southern', 'grey-robed', 'libertine', 'noble-blooded', 'laconic', 'talkative'],
+                       ['hermit', 'bon vivant', 'soldier', 'potato farmer', 'rabbit-herder', 'bar wench', 'archer', 'henchman', 'minion', 'sorceror', 'scribe', 'acolyte', 'cultist'],
+                       ['with fiery hair', 'with grey eyes', 'with a knowing smile', 'with a devilish grin', 'leaning on a staff', 'dressed for a long journey', 'with a piercing gaze', 'with calloused hands', 'smelling of clementines', 'with an anklet of bells', 'with a dragonscale pendant', 'out for a stroll', 'selling curiosities', 'astride a horse']]
+        
+        var monsters = [['shambling', 'giant', 'frozen', 'lurking', 'malevolent', 'fiery', 'demonic', 'malodorous', 'invisible', 'insectoid', 'glyph-covered', 'oozing', 'melting'],
+                       ['water', 'fire', 'earth', 'air', 'iron', 'ether', 'obsidian', 'sand', 'carrion', 'cloud', 'fog', 'diamond', 'emerald', 'sea', 'forest'],
+                       ['demon', 'zombie', 'elemental', 'abomination', 'creeper', 'hulk', 'dragon', 'scorpion', 'wyrm', 'construct', 'imp', 'centaur', 'lizardkin', 'serpent', 'dire-hedgehog', 'gaunt', 'ghost', 'lich', 'fiend']]
+        
+        var items =    [['eldritch', 'cold', 'glyph-covered', 'heavy', 'black', 'offputting', 'gold-inlaid', 'notorious', 'whispering', 'cursed', 'blessed', 'flaming', 'giant', 'ancient', 'ethereal', 'rune-inscribed'],
+                       ['iron', 'silver', 'platinum', 'obsidian', 'diamond', 'emerald', 'sandstone', 'dragon-scale', 'ivory', 'leather', 'marble', 'glass'],
+                       ['tome', 'broadsword', 'rapier', 'shiv', 'treasure chest', 'breastplate', 'diadem', 'ring', 'locket', 'scimitar', 'warhammer', 'battle-axe', 'longbow', 'seal', 'spellbook', 'scroll', 'map', 'cloak', 'arrows']]
+        
+        function make_silliness (wordlists) {
+            var class_display = $('#class_display');
+            var i = 0;
+            var silly_class = "";
+            while(wordlists[i]) {
+                var list_length = wordlists[i].length;
+                var rand_index = Math.floor((Math.random()*list_length));
+                var silly_word = wordlists[i][rand_index];
+                silly_class = silly_class + silly_word + " ";
+                i += 1;
+            }
+            class_display.html(silly_class);
+        }
+        
+        $(document).ready(function(){
+            //make_silliness();
+            var trigger = $('.trigger');
+            trigger.on('click', function() {
+                var type_of_noun = $(this).attr('id');
+                make_silliness(eval(type_of_noun));
+            });
+        });
+    </script>
+  </body>
+</html>
