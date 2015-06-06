@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verity's Super Funny Classes</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+      html, body {
+        height: 100%;
+      }
+      
+      #wrap {
+        min-height: 100%;
+        height: auto;
+        /* Negative indent footer by its height */
+        margin: 0 auto -120px;
+        /* Pad bottom by footer height */
+        padding: 0 0 120px;
+      }
+
+      .jumbotron {
+        background: #39b3d7;
+      }
+      
+      .jumbotron h1 {
+        color: white;
+      }
+      
+      .fancy {
+        color: #39b3d7;
+        font-size: 200%;
+        font-weight: bold;
+      }
+      
+      #footer {
+        background-color: rgb(245, 245, 245);
+        padding: 20px;
+        height: 120px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div id="wrap">
+      <header>
+        <div class="jumbotron">
+          <h1>such cyber very wow</h1>
+        </div>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="span10 offset1">
+            <p>
+              @sparkymonster and I were talking about the glorious inanity, the
+              1337 hacker skill, that is CSI: Cyber.
+            </p>
+              <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/ThatAndromeda">@ThatAndromeda</a> you could write a randomizer to create dialogue</p>&mdash; Hey Sparky (@sparkymonster) <a href="https://twitter.com/sparkymonster/status/607020356143083520">June 6, 2015</a></blockquote>
+              <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <p>
+              So I did.
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <p class="fancy">
+            real cyberdetectives definitely say...
+          </p>
+          <p id="cyberrific" class="lead fancy"></p>
+          <button id="combo_button" class="btn btn-info">make another!</button>
+      </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="container">
+      </div>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        var wordlists = [['This was a ', 'It looks like a ',
+                          'Only a top hacker could pull off this ',
+                          "I've never seen such a sophisticated ",
+                          "We have a problem, and it's called "],
+                         ['swap space ', 'Bitcoin ', 'rack unit ', 'social media ', 'GPS data ',
+                          'motherboard ', 'cyber ', 'technology ', 'ssh tunnel ', 'rot-13 ',
+                          'malware ', 'remote access ', 'crypto ', 'spyware ',
+                          'source code ', 'phishing ', 'wifi password',
+                          '2.0 ', 'TCP/IP ', 'two megapixel', 'router ', 'packet-switching '],
+                         ['heist', 'hack', 'technology', 'script', 'prompt', 'cybercrime',
+                          'network', 'worm', 'encryption', 'token ring', 'virus', 'BBS ',
+                          'multiplexer']];
+        
+        function make_silliness () {
+            var cyberrific = $('#cyberrific');
+            var i = 0;
+            var silly_class = "";
+            while(wordlists[i]) {
+                var list_length = wordlists[i].length;
+                var rand_index = Math.floor((Math.random()*list_length));
+                var silly_word = wordlists[i][rand_index];
+                silly_class = silly_class + silly_word;
+                i += 1;
+            }
+            cyberrific.html(silly_class + "!");
+        }
+        $(document).ready(function(){
+            make_silliness();
+            var combo_button = $('#combo_button');
+            combo_button.on('click', function() {
+                make_silliness();
+            });
+        });
+    </script>
+  </body>
+</html>
