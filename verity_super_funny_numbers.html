@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Verity's Super Funny Classes</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <style>
       html, body {
         height: 100%;
@@ -61,31 +61,45 @@
         </div>
       </div>
     </footer>
-    <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
         function change_color (color) {
           var body = $('body');
           var jumbotron = $('.jumbotron');
+          var footer = $('footer');
 
-          var orig_body_color = body.css('background-color');
-          var orig_jumbotron_color = jumbotron.css('background-color');
+          var elements = [body, jumbotron, footer];
 
-          body.css({'background-color': color});
-          jumbotron.css({'background-color': color});
+          // Get original colors of all elements to be changed
+          var orig_colors = {};
+          elements.forEach(function (element) {
+            orig_colors[element.selector] = element.css('background-color');    
+          });
 
+          // Change all elements to have desired background color
+          elements.forEach(function (element) {
+            element.css({'background-color': color});
+          });
+
+          // After a 10-second delay, switch all elements back to original background
+          // color
           setTimeout(function() {
-            body.css({'background-color': orig_body_color});
-            jumbotron.css({'background-color': orig_jumbotron_color});
+            elements.forEach(function (element) {
+              var orig_color = orig_colors[element.selector];
+              element.css({'background-color': orig_color});
+            });
           }, 10000);
         }
 
         function make_silliness () {
             var result_display = $('#result_display');
             var i = 0;
-            // Get a random integer between 0 and 9999, inclusive.
+            // Get a random integer between 0 and 9999, inclusive, and show it
+            // to the user.
             rand = Math.floor(Math.random()*10000)
             result_display.html(rand);
 
+            // Choose new temporary background color.
             if (rand >= 3500) {
               change_color('#ff6701');
             } else {
