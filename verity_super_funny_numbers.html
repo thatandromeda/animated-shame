@@ -70,11 +70,8 @@
           var orig_body_color = body.css('background-color');
           var orig_jumbotron_color = jumbotron.css('background-color');
 
-          body.css({'background-color': color});
-          jumbotron.css({'background-color': color}).delay(10000);
-
-          body.css({'background-color': orig_body_color});
-          jumbotron.css({'background-color': orig_jumbotron_color});
+          body.css({'background-color': color}).css({'background-color': orig_body_color});
+          jumbotron.css({'background-color': color}).delay(10000).css({'background-color': orig_jumbotron_color});
         }
 
         function make_silliness () {
