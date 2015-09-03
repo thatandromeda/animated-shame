@@ -69,12 +69,15 @@
 
           var orig_body_color = body.css('background-color');
           var orig_jumbotron_color = jumbotron.css('background-color');
+          console.log('orig_body_color is ' + orig_body_color);
 
           setTimeout(function() {
             body.css({'background-color': color});
             jumbotron.css({'background-color': color});
+            console.log('inside setTimeout');
           }, 10000);
 
+          console.log('outside setTimeout');
           body.css({'background-color': orig_body_color});
           jumbotron.css({'background-color': orig_jumbotron_color});
         }
